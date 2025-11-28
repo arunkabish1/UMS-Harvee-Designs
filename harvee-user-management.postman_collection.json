@@ -1,0 +1,134 @@
+{
+  "info": {
+    "name": "Harvee User Management System",
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "Postman Collection for Full-Stack User Management System (MERN)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Arun", "type": "text" },
+            { "key": "email", "value": "arun@gmail.com", "type": "text" },
+            { "key": "phone", "value": "8300000000", "type": "text" },
+            { "key": "password", "value": "Arun123@", "type": "text" },
+            { "key": "address", "value": "Tamil Nadu, India", "type": "text" },
+            { "key": "state", "value": "Tamil Nadu", "type": "text" },
+            { "key": "city", "value": "Chennai", "type": "text" },
+            { "key": "country", "value": "India", "type": "text" },
+            { "key": "pincode", "value": "600001", "type": "text" },
+            { "key": "profile_image", "type": "file" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/register",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email_or_phone\": \"arun@gmail.com\",\n  \"password\": \"Arun123@\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get All Users (Admin Only)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/users?search=",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "users"],
+          "query": [{ "key": "search", "value": "" }]
+        }
+      }
+    },
+    {
+      "name": "Get User By ID",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+        ],
+        "url": {
+          "raw":
+            "http://localhost:5000/api/users/{{USER_ID}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "users", "{{USER_ID}}"]
+        }
+      }
+    },
+    {
+      "name": "Update User",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Updated Name", "type": "text" },
+            { "key": "city", "value": "Updated City", "type": "text" },
+            { "key": "state", "value": "Updated State", "type": "text" },
+            { "key": "profile_image", "type": "file" }
+          ]
+        },
+        "url": {
+          "raw":
+            "http://localhost:5000/api/users/{{USER_ID}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "users", "{{USER_ID}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{ACCESS_TOKEN}}" }
+        ],
+        "url": {
+          "raw":
+            "http://localhost:5000/api/users/{{USER_ID}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "users", "{{USER_ID}}"]
+        }
+      }
+    }
+  ]
+}
